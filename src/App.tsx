@@ -1,15 +1,19 @@
+import { useEffect } from "react";
 import "./App.css";
-import { StoreDemo1 } from "./StoreDemo1";
+
 import { useTasksStore } from "./tasks-store";
+import { tasks } from "./dummy-tasks-data";
 
 function App() {
   const { setTasks, setTasksView, setCurrentUserFilter } = useTasksStore();
-  return (
-    <div className="m-5 p-5 flex flex-col gap-2">
-      <StoreDemo1 />
-      <StoreDemo1 />
-    </div>
-  );
+
+  useEffect(() => {
+    setTasks(tasks);
+    setTasksView("list");
+    setCurrentUserFilter("Adam");
+  }, []);
+
+  return <div className="m-5 p-5 flex flex-col gap-2"></div>;
 }
 
 export default App;
