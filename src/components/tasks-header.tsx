@@ -1,14 +1,10 @@
 import type { FC } from "react";
-import { useTasksStore, type TasksView as TasksViewType } from "../tasks-store";
+import { allViews, useTasksStore } from "../tasks-store";
 import { cn } from "../utils";
 
-const allViews: TasksViewType[] = ["list", "detailed", "condensed"];
+export const TasksHeader: FC = () => {
+  const { currentView, setCurrentView } = useTasksStore();
 
-export const TasksView: FC = () => {
-  const { currentView, setCurrentView } = useTasksStore(state => ({
-    currentView: state.currentView,
-    setCurrentView: state.setCurrentView,
-  }));
   return (
     <div className="flex gap-1">
       {allViews.map(view => (

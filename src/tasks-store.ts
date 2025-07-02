@@ -19,7 +19,7 @@ export type TasksState = {
   setCurrentUserFilter: (newUserFilter: string) => void;
 };
 
-export const useTasksStore = create<TasksState>((set) => ({
+export const useTasksStore = create<TasksState>(set => ({
   tasks: [],
   setTasks: (tasks: Task[]) => set({ tasks }),
   currentView: "list",
@@ -27,3 +27,5 @@ export const useTasksStore = create<TasksState>((set) => ({
   currentUserFilter: "",
   setCurrentUserFilter: (newUserFilter: string) => set({ currentUserFilter: newUserFilter }),
 }));
+
+export const allViews: TasksView[] = ["list", "detailed", "condensed"];
