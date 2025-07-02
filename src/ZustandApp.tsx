@@ -6,13 +6,13 @@ import { tasks } from "./dummy-tasks-data";
 import { TasksView } from "./components/tasks-view";
 
 function App() {
-  const { setTasks, setCurrentView, setCurrentUserFilter } = useTasksStore();
+  // const { setTasks, setCurrentView, setCurrentUserFilter } = useTasksStore();
 
-  useEffect(() => {
-    setTasks(tasks);
-    setCurrentView("list");
-    setCurrentUserFilter("Adam");
-  }, []);
+  // useEffect(() => {
+  //   setTasks(tasks);
+  //   setCurrentView("list");
+  //   setCurrentUserFilter("Adam");
+  // }, []);
 
   return (
     <div className="m-5 p-5 flex flex-col gap-2">
