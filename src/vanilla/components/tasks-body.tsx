@@ -1,9 +1,9 @@
 import type { FC } from "react";
-import { useTasksStore } from "../tasks-store";
+import { useTasksContext } from "../tasks-store";
 import { cn } from "../../utils";
 
 export const TasksBody: FC = () => {
-  const { currentView } = useTasksStore();
+  const { currentView } = useTasksContext();
 
   return (
     <div className="flex gap-1">
@@ -15,7 +15,7 @@ export const TasksBody: FC = () => {
 };
 
 const TasksList: FC = () => {
-  const { tasks } = useTasksStore();
+  const { tasks } = useTasksContext();
 
   return (
     <table className="w-full border-collapse">
@@ -42,7 +42,7 @@ const TasksList: FC = () => {
 };
 
 const TasksCondensed: FC = () => {
-  const { tasks } = useTasksStore();
+  const { tasks } = useTasksContext();
 
   return (
     <div className="flex flex-col gap-2">
@@ -58,7 +58,7 @@ const TasksCondensed: FC = () => {
 };
 
 const TasksDetailed: FC = () => {
-  const { tasks } = useTasksStore();
+  const { tasks } = useTasksContext();
 
   return (
     <div className="flex flex-col gap-4">

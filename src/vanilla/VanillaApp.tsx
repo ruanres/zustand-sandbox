@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
-import { useTasksStore } from "./tasks-store";
+import { TasksProvider, useTasksContext } from "./tasks-store";
 import { tasks } from "../dummy-tasks-data";
 import { TasksHeader } from "./components/tasks-header";
 import { TasksBody } from "./components/tasks-body";
 
-function App() {
-  const { setTasks, setCurrentView, setCurrentUserFilter } = useTasksStore();
+function AppContent() {
+  const { setTasks, setCurrentView, setCurrentUserFilter } = useTasksContext();
 
   useEffect(() => {
     setTasks(tasks);
@@ -16,10 +16,18 @@ function App() {
 
   return (
     <div className="m-5 p-5 flex flex-col gap-2">
-      <span>Vanilla</span>
+      <span>Zustand</span>
       <TasksHeader />
       <TasksBody />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <TasksProvider>
+      <AppContent />
+    </TasksProvider>
   );
 }
 
