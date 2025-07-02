@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import "./App.css";
 
 import { useTasksStore } from "./tasks-store";
-import { tasks } from "./dummy-tasks-data";
+import { tasks } from "../dummy-tasks-data";
 import { TasksHeader } from "./components/tasks-header";
 import { TasksBody } from "./components/tasks-body";
 

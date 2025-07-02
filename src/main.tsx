@@ -1,7 +1,9 @@
 import { StrictMode, useState, type FC } from "react";
 import { createRoot } from "react-dom/client";
 
-import ZustandApp from "./ZustandApp.tsx";
+import ZustandApp from "./zustand/ZustandApp";
+
+import "./App.css";
 
 const Root: FC = () => {
   const [app, setApp] = useState<"zustand" | "vanilla">("zustand");

@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useTasksStore } from "../tasks-store";
-import { cn } from "../utils";
+import { cn } from "../../utils";
 
 export const TasksBody: FC = () => {
   const { currentView } = useTasksStore();

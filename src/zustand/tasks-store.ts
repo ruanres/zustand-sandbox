@@ -1,12 +1,5 @@
 import { create } from "zustand";
-
-export type Task = {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-  user: string;
-};
+import type { Task } from "../utils";
 
 export type TasksView = "list" | "detailed" | "condensed";
 
