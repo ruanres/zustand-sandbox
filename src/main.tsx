@@ -2,6 +2,7 @@ import { StrictMode, useState, type FC } from "react";
 import { createRoot } from "react-dom/client";
 
 import ZustandApp from "./zustand/ZustandApp";
+import VanillaApp from "./vanilla/VanillaApp";
 
 import "./App.css";
 
@@ -18,7 +19,7 @@ const Root: FC = () => {
           Vanilla
         </button>
       </div>
-      {app === "zustand" ? <ZustandApp /> : null}
+      {app === "zustand" ? <ZustandApp /> : <VanillaApp />}
     </div>
   );
 };
