@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import type { ReactNode } from "react";
 import type { Task } from "../utils";
+import { tasks as dummyTasks } from "../dummy-tasks-data";
 
 export type TasksView = "list" | "detailed" | "condensed";
 
@@ -18,9 +19,9 @@ const TasksContext = createContext<TasksState>(null as any);
 export const TasksProvider = ({ children }: { children: ReactNode }) => {
   console.log("Rendering TasksProvider");
 
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(dummyTasks);
   const [currentView, setCurrentView] = useState<TasksView>("list");
-  const [currentUserFilter, setCurrentUserFilter] = useState<string>("");
+  const [currentUserFilter, setCurrentUserFilter] = useState<string>("Adam");
 
   const value: TasksState = {
     tasks,
