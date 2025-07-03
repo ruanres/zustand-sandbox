@@ -6,6 +6,7 @@ import { TasksHeader } from "./components/tasks-header";
 import { TasksBody } from "./components/tasks-body";
 
 function App() {
+  console.log("Rendering App");
   const { setTasks, setCurrentView, setCurrentUserFilter } = useTasksStore();
 
   useEffect(() => {

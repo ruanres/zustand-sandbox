@@ -3,6 +3,7 @@ import { allViews, useTasksStore } from "../tasks-store";
 import { cn } from "../../utils";
 
 export const TasksHeader: FC = () => {
+  console.log("Rendering TasksHeader");
   const { currentView, setCurrentView } = useTasksStore();
 
   return (
