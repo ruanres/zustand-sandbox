@@ -16,6 +16,7 @@ export type TasksState = {
 const TasksContext = createContext<TasksState>(null as any);
 
 export const TasksProvider = ({ children }: { children: ReactNode }) => {
+  console.log("Rendering TasksProvider");
   const [tasks, setTasks] = useState<Task[]>([]);
   const [currentView, setCurrentView] = useState<TasksView>("list");
   const [currentUserFilter, setCurrentUserFilter] = useState<string>("");

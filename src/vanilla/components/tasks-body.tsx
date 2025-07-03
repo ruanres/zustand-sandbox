@@ -3,6 +3,7 @@ import { useTasksContext } from "../tasks-store";
 import { cn } from "../../utils";
 
 export const TasksBody: FC = () => {
+  console.log("Rendering TasksBody");
   const { currentView } = useTasksContext();
 
   return (
@@ -15,6 +16,7 @@ export const TasksBody: FC = () => {
 };
 
 const TasksList: FC = () => {
+  console.log("Rendering TasksList");
   const { tasks } = useTasksContext();
 
   return (
@@ -42,6 +44,7 @@ const TasksList: FC = () => {
 };
 
 const TasksCondensed: FC = () => {
+  console.log("Rendering TasksCondensed");
   const { tasks } = useTasksContext();
 
   return (
@@ -58,6 +61,7 @@ const TasksCondensed: FC = () => {
 };
 
 const TasksDetailed: FC = () => {
+  console.log("Rendering TasksDetailed");
   const { tasks } = useTasksContext();
 
   return (
