@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type { Task } from "../utils";
+import { tasks } from "../dummy-tasks-data";
 
 export type TasksView = "list" | "detailed" | "condensed";
 
@@ -13,11 +14,11 @@ export type TasksState = {
 };
 
 export const useTasksStore = create<TasksState>(set => ({
-  tasks: [],
+  tasks,
   setTasks: (tasks: Task[]) => set({ tasks }),
   currentView: "list",
   setCurrentView: (newView: TasksView) => set({ currentView: newView }),
-  currentUserFilter: "",
+  currentUserFilter: "Adam",
   setCurrentUserFilter: (newUserFilter: string) => set({ currentUserFilter: newUserFilter }),
 }));
 
