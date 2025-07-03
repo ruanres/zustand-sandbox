@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export type Task = {
-  id: string;
+  id: any;
   title: string;
   description: string;
   completed: boolean;
