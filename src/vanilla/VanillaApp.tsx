@@ -7,6 +7,7 @@ import { TasksBody } from "./components/tasks-body";
 
 function AppContent() {
   console.log("Rendering AppContent");
+
   const { setTasks, setCurrentView, setCurrentUserFilter } = useTasksContext();
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function AppContent() {
 
 function App() {
   console.log("Rendering App");
+
   return (
     <TasksProvider>
       <AppContent />
