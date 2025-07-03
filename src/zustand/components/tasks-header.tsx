@@ -11,6 +11,7 @@ export const TasksHeader: FC = () => {
     <div className="flex gap-1">
       {allViews.map(view => (
         <button
+          key={view}
           onClick={() => setCurrentView(view)}
           className={cn("p-1 bg-gray-200 rounded-md", { "bg-gray-400": view === currentView })}
           disabled={view === currentView}
