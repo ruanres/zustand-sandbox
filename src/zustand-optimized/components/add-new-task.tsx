@@ -1,11 +1,18 @@
 import type { FC } from "react";
 import { useTasksStore } from "../tasks-store";
+import { useShallow } from "zustand/react/shallow";
 
 export const AddNewTask: FC<{}> = () => {
   console.log("Rendering AddNewTask");
 
-  const tasks = useTasksStore(state => state.tasks);
-  const setTasks = useTasksStore(state => state.setTasks);
+  const [tasks, setTasks] = useTasksStore(useShallow(state => [state.tasks, state.setTasks]));
+
+  // const { tasks, setTasks } = useTasksStore(
+  //   useShallow(state => ({
+  //     tasks: state.tasks,
+  //     setTasks: state.setTasks,
+  //   }))
+  // );
 
   return (
     <div>
