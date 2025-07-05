@@ -1,14 +1,34 @@
-import { StrictMode, useState, type FC } from "react";
+import { StrictMode, useState, useEffect, type FC } from "react";
 import { createRoot } from "react-dom/client";
 
 import ZustandApp from "./zustand/ZustandApp";
+import ZustandOptimizedApp from "./zustand-optimized/ZustandApp";
 import VanillaApp from "./vanilla/VanillaApp";
 
 import "./App.css";
 import { cn } from "./utils";
 
+const LOCAL_STORAGE_KEY = "zustand-sandbox-current-app";
+
+type AppType = "zustand" | "vanilla" | "zustand-optimized";
+
 const Root: FC = () => {
-  const [app, setApp] = useState<"zustand" | "vanilla" | "zustand-optimized">("zustand");
+  const [app, setApp] = useState<AppType>(() => {
+    try {
+      const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (saved === "vanilla" || saved === "zustand" || saved === "zustand-optimized") {
+        return saved as AppType;
+      }
+    } catch (err) {}
+    return "vanilla";
+  });
+
+  // Sync app type to local storage whenever app state changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, app);
+    } catch (error) {}
+  }, [app]);
 
   return (
     <div className="p-2">
@@ -32,7 +52,9 @@ const Root: FC = () => {
           Zustand Optimized
         </button>
       </div>
-      {app === "zustand" ? <ZustandApp /> : <VanillaApp />}
+      {app === "vanilla" && <VanillaApp />}
+      {app === "zustand" && <ZustandApp />}
+      {app === "zustand-optimized" && <ZustandOptimizedApp />}
     </div>
   );
 };
