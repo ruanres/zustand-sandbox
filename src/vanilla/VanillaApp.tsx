@@ -1,4 +1,4 @@
-import { TasksProvider } from "./tasks-store";
+import { TasksProvider } from "./tasks-context";
 import { TasksHeader } from "./components/tasks-header";
 import { TasksBody } from "./components/tasks-body";
 import { AddNewTask } from "./components/add-new-task";

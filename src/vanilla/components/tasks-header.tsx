@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { allViews, useTasksContext } from "../tasks-store";
+import { allViews, useTasksContext } from "../tasks-context";
 import { cn } from "../../utils";
 
 export const TasksHeader: FC = () => {

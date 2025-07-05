@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useTasksContext } from "../tasks-store";
+import { useTasksContext } from "../tasks-context";
 import { cn } from "../../utils";
 
 export const TasksBody: FC = () => {
