@@ -5,7 +5,8 @@ import { cn } from "../../utils";
 export const TasksHeader: FC = () => {
   console.log("Rendering TasksHeader");
 
-  const { currentView, setCurrentView } = useTasksStore();
+  const currentView = useTasksStore(state => state.currentView);
+  const setCurrentView = useTasksStore(state => state.setCurrentView);
 
   return (
     <div className="flex gap-1">

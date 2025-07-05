@@ -4,7 +4,8 @@ import { useTasksStore } from "../tasks-store";
 export const AddNewTask: FC<{}> = () => {
   console.log("Rendering AddNewTask");
 
-  const { tasks, setTasks } = useTasksStore();
+  const tasks = useTasksStore(state => state.tasks);
+  const setTasks = useTasksStore(state => state.setTasks);
 
   return (
     <div>

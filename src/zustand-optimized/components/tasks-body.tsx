@@ -5,7 +5,7 @@ import { cn } from "../../utils";
 export const TasksBody: FC = () => {
   console.log("Rendering TasksBody");
 
-  const { currentView } = useTasksStore();
+  const currentView = useTasksStore(state => state.currentView);
 
   return (
     <div className="flex gap-1">
@@ -19,7 +19,7 @@ export const TasksBody: FC = () => {
 const TasksList: FC = () => {
   console.log("Rendering TasksList");
 
-  const { tasks } = useTasksStore();
+  const tasks = useTasksStore(state => state.tasks);
 
   return (
     <table className="w-full border-collapse">
@@ -48,7 +48,7 @@ const TasksList: FC = () => {
 const TasksCondensed: FC = () => {
   console.log("Rendering TasksCondensed");
 
-  const { tasks } = useTasksStore();
+  const tasks = useTasksStore(state => state.tasks);
 
   return (
     <div className="flex flex-col gap-2">
@@ -66,7 +66,7 @@ const TasksCondensed: FC = () => {
 const TasksDetailed: FC = () => {
   console.log("Rendering TasksDetailed");
 
-  const { tasks } = useTasksStore();
+  const tasks = useTasksStore(state => state.tasks);
 
   return (
     <div className="flex flex-col gap-4">
