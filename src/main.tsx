@@ -59,8 +59,4 @@ const Root: FC = () => {
   );
 };
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Root />
-  </StrictMode>
-);
+createRoot(document.getElementById("root")!).render(<Root />);
