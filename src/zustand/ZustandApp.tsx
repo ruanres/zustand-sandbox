@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="m-5 p-5 flex flex-col gap-2">
-      <span>Zustand</span>
+      <ZustandLabel />
       <AddNewTask />
       <TasksCount />
       <TasksHeader />
@@ -16,5 +16,10 @@ function App() {
     </div>
   );
 }
+
+const ZustandLabel = () => {
+  console.log("Rendering ZustandLabel");
+  return <span>Zustand</span>;
+};
 
 export default App;

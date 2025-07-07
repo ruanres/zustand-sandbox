@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="m-5 p-5 flex flex-col gap-2">
-      <span>Zustand Optimized</span>
+      <ZustandOptimizedLabel />
       <AddNewTask />
       <TasksCount />
       <TasksHeader />
@@ -16,5 +16,10 @@ function App() {
     </div>
   );
 }
+
+const ZustandOptimizedLabel = () => {
+  console.log("Rendering Zustand Optimized Label");
+  return <span>Zustand Optimized</span>;
+};
 
 export default App;
