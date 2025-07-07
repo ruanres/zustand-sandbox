@@ -9,7 +9,7 @@ function AppContent() {
 
   return (
     <div className="m-5 p-5 flex flex-col gap-2">
-      <span>Zustand</span>
+      <VanillaLabel />
       <AddNewTask />
       <TasksCount />
       <TasksHeader />
@@ -17,6 +17,11 @@ function AppContent() {
     </div>
   );
 }
+
+const VanillaLabel = () => {
+  console.log("Rendering VanillaLabel");
+  return <span>Vanilla</span>;
+};
 
 function App() {
   console.log("Rendering App");
