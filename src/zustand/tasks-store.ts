@@ -15,7 +15,13 @@ export type TasksState = {
 
 export const useTasksStore = create<TasksState>(set => ({
   tasks,
-  setTasks: (tasks: Task[]) => set({ tasks }),
+  setTasks: (arg: Task[] | ((tasks: Task[]) => Task[])) => {
+    set(state => {
+      return {
+        tasks: typeof arg === "function" ? arg(state.tasks) : arg,
+      };
+    });
+  },
   currentView: "list",
   setCurrentView: (newView: TasksView) => set({ currentView: newView }),
   currentUserFilter: "Adam",
