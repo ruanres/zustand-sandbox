@@ -3,6 +3,7 @@ import { TasksHeader } from "./components/tasks-header";
 import { TasksBody } from "./components/tasks-body";
 import { AddNewTask } from "./components/add-new-task";
 import { TasksCount } from "./components/tasks-count";
+import { Filter } from "./components/filter";
 
 function AppContent() {
   console.log("Rendering AppContent");
@@ -13,6 +14,7 @@ function AppContent() {
       <AddNewTask />
       <TasksCount />
       <TasksHeader />
+      <Filter />
       <TasksBody />
     </div>
   );

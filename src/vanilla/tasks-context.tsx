@@ -10,8 +10,8 @@ export type TasksState = {
   setTasks: (tasks: Task[] | ((tasks: Task[]) => Task[])) => void;
   currentView: TasksView;
   setCurrentView: (tasksView: TasksView) => void;
-  currentUserFilter: string;
-  setCurrentUserFilter: (newUserFilter: string) => void;
+  currentFilter: string;
+  setCurrentFilter: (newFilter: string) => void;
 };
 
 const TasksContext = createContext<TasksState>(null as any);
@@ -21,15 +21,15 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
 
   const [tasks, setTasks] = useState<Task[]>(dummyTasks);
   const [currentView, setCurrentView] = useState<TasksView>("list");
-  const [currentUserFilter, setCurrentUserFilter] = useState<string>("Adam");
+  const [currentFilter, setCurrentFilter] = useState<string>("");
 
   const value: TasksState = {
     tasks,
     setTasks,
     currentView,
     setCurrentView,
-    currentUserFilter,
-    setCurrentUserFilter,
+    currentFilter,
+    setCurrentFilter,
   };
 
   return <TasksContext.Provider value={value}>{children}</TasksContext.Provider>;

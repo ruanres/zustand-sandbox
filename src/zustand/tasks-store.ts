@@ -9,8 +9,8 @@ export type TasksState = {
   setTasks: (tasks: Task[]) => void;
   currentView: TasksView;
   setCurrentView: (tasksView: TasksView) => void;
-  currentUserFilter: string;
-  setCurrentUserFilter: (newUserFilter: string) => void;
+  currentFilter: string;
+  setCurrentFilter: (newFilter: string) => void;
 };
 
 export const useTasksStore = create<TasksState>(set => ({
@@ -24,8 +24,8 @@ export const useTasksStore = create<TasksState>(set => ({
   },
   currentView: "list",
   setCurrentView: (newView: TasksView) => set({ currentView: newView }),
-  currentUserFilter: "Adam",
-  setCurrentUserFilter: (newUserFilter: string) => set({ currentUserFilter: newUserFilter }),
+  currentFilter: "",
+  setCurrentFilter: (newFilter: string) => set({ currentFilter: newFilter }),
 }));
 
 export const allViews: TasksView[] = ["list", "detailed", "condensed"];
