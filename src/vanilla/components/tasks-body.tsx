@@ -1,25 +1,12 @@
 import type { FC } from "react";
 import { useTasksContext } from "../tasks-context";
 import { cn } from "../../utils";
+import type { Task } from "../../utils";
 
 export const TasksBody: FC = () => {
   console.log("Rendering TasksBody");
 
-  const { currentView } = useTasksContext();
-
-  return (
-    <div className="flex gap-1">
-      {currentView === "list" && <TasksList />}
-      {currentView === "detailed" && <TasksDetailed />}
-      {currentView === "condensed" && <TasksCondensed />}
-    </div>
-  );
-};
-
-const TasksList: FC = () => {
-  console.log("Rendering TasksList");
-
-  const { tasks, currentFilter } = useTasksContext();
+  const { currentView, tasks, currentFilter } = useTasksContext();
 
   const filteredTasks = currentFilter
     ? tasks.filter(
@@ -28,6 +15,18 @@ const TasksList: FC = () => {
           task.description.toLowerCase().includes(currentFilter.toLowerCase())
       )
     : tasks;
+
+  return (
+    <div className="flex gap-1">
+      {currentView === "list" && <TasksList tasks={filteredTasks} />}
+      {currentView === "detailed" && <TasksDetailed tasks={filteredTasks} />}
+      {currentView === "condensed" && <TasksCondensed tasks={filteredTasks} />}
+    </div>
+  );
+};
+
+const TasksList: FC<{ tasks: Task[] }> = ({ tasks }) => {
+  console.log("Rendering TasksList");
 
   return (
     <table className="w-full border-collapse">
@@ -40,7 +39,7 @@ const TasksList: FC = () => {
         </tr>
       </thead>
       <tbody>
-        {filteredTasks.map(task => (
+        {tasks.map(task => (
           <tr key={task.id}>
             <td className="border p-2">{task.title}</td>
             <td className="border p-2">{task.description}</td>
@@ -53,22 +52,12 @@ const TasksList: FC = () => {
   );
 };
 
-const TasksCondensed: FC = () => {
+const TasksCondensed: FC<{ tasks: Task[] }> = ({ tasks }) => {
   console.log("Rendering TasksCondensed");
-
-  const { tasks, currentFilter } = useTasksContext();
-
-  const filteredTasks = currentFilter
-    ? tasks.filter(
-        task =>
-          task.title.toLowerCase().includes(currentFilter.toLowerCase()) ||
-          task.description.toLowerCase().includes(currentFilter.toLowerCase())
-      )
-    : tasks;
 
   return (
     <div className="flex flex-col gap-2">
-      {filteredTasks.map(task => (
+      {tasks.map(task => (
         <div key={task.id} className="flex flex-col gap-2 border p-2 rounded">
           <div className="font-bold">{task.title}</div>
           <div className="text-sm text-gray-600">{task.user}</div>
@@ -79,22 +68,12 @@ const TasksCondensed: FC = () => {
   );
 };
 
-const TasksDetailed: FC = () => {
+const TasksDetailed: FC<{ tasks: Task[] }> = ({ tasks }) => {
   console.log("Rendering TasksDetailed");
-
-  const { tasks, currentFilter } = useTasksContext();
-
-  const filteredTasks = currentFilter
-    ? tasks.filter(
-        task =>
-          task.title.toLowerCase().includes(currentFilter.toLowerCase()) ||
-          task.description.toLowerCase().includes(currentFilter.toLowerCase())
-      )
-    : tasks;
 
   return (
     <div className="flex flex-col gap-4">
-      {filteredTasks.map(task => (
+      {tasks.map(task => (
         <div key={task.id} className="flex flex-col gap-3 border p-4 rounded-lg shadow-sm">
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-bold">{task.title}</h3>
