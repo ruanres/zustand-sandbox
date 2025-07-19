@@ -4,14 +4,14 @@ import { useTasksStore } from "../tasks-store";
 export const AddNewTask: FC<{}> = () => {
   console.log("Rendering AddNewTask");
 
-  const { tasks, setTasks } = useTasksStore();
+  const { setTasks } = useTasksStore();
 
   return (
     <div>
       <button
         className="bg-blue-500 text-white p-2 rounded-md"
         onClick={() =>
-          setTasks(
+          setTasks(tasks =>
             tasks.concat({
               id: tasks.length + 1,
               title: "New Task",
