@@ -19,7 +19,15 @@ export const TasksBody: FC = () => {
 const TasksList: FC = () => {
   console.log("Rendering TasksList");
 
-  const { tasks } = useTasksContext();
+  const { tasks, currentFilter } = useTasksContext();
+
+  const filteredTasks = currentFilter
+    ? tasks.filter(
+        task =>
+          task.title.toLowerCase().includes(currentFilter.toLowerCase()) ||
+          task.description.toLowerCase().includes(currentFilter.toLowerCase())
+      )
+    : tasks;
 
   return (
     <table className="w-full border-collapse">
@@ -32,7 +40,7 @@ const TasksList: FC = () => {
         </tr>
       </thead>
       <tbody>
-        {tasks.map(task => (
+        {filteredTasks.map(task => (
           <tr key={task.id}>
             <td className="border p-2">{task.title}</td>
             <td className="border p-2">{task.description}</td>
@@ -48,11 +56,19 @@ const TasksList: FC = () => {
 const TasksCondensed: FC = () => {
   console.log("Rendering TasksCondensed");
 
-  const { tasks } = useTasksContext();
+  const { tasks, currentFilter } = useTasksContext();
+
+  const filteredTasks = currentFilter
+    ? tasks.filter(
+        task =>
+          task.title.toLowerCase().includes(currentFilter.toLowerCase()) ||
+          task.description.toLowerCase().includes(currentFilter.toLowerCase())
+      )
+    : tasks;
 
   return (
     <div className="flex flex-col gap-2">
-      {tasks.map(task => (
+      {filteredTasks.map(task => (
         <div key={task.id} className="flex flex-col gap-2 border p-2 rounded">
           <div className="font-bold">{task.title}</div>
           <div className="text-sm text-gray-600">{task.user}</div>
@@ -66,11 +82,19 @@ const TasksCondensed: FC = () => {
 const TasksDetailed: FC = () => {
   console.log("Rendering TasksDetailed");
 
-  const { tasks } = useTasksContext();
+  const { tasks, currentFilter } = useTasksContext();
+
+  const filteredTasks = currentFilter
+    ? tasks.filter(
+        task =>
+          task.title.toLowerCase().includes(currentFilter.toLowerCase()) ||
+          task.description.toLowerCase().includes(currentFilter.toLowerCase())
+      )
+    : tasks;
 
   return (
     <div className="flex flex-col gap-4">
-      {tasks.map(task => (
+      {filteredTasks.map(task => (
         <div key={task.id} className="flex flex-col gap-3 border p-4 rounded-lg shadow-sm">
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-bold">{task.title}</h3>
