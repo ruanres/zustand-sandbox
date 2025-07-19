@@ -11,10 +11,9 @@ export type TasksState = {
   setCurrentView: (tasksView: TasksView) => void;
   currentFilter: string;
   setCurrentFilter: (newFilter: string) => void;
-  clearEvenTasks: any;
 };
 
-export const useTasksStore = create<TasksState>((set, get) => ({
+export const useTasksStore = create<TasksState>(set => ({
   tasks,
   setTasks: (arg: Task[] | ((tasks: Task[]) => Task[])) => {
     set(state => {
@@ -27,10 +26,6 @@ export const useTasksStore = create<TasksState>((set, get) => ({
   setCurrentView: (newView: TasksView) => set({ currentView: newView }),
   currentFilter: "",
   setCurrentFilter: (newFilter: string) => set({ currentFilter: newFilter }),
-  clearEvenTasks: () => {
-    const oddTasks = get().tasks.filter((_, index) => index % 2 === 0);
-    set({ tasks: oddTasks });
-  },
 }));
 
 export const allViews: TasksView[] = ["list", "detailed", "condensed"];
