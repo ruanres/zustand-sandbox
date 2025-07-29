@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "test": "echo \"No tests specified\" && exit 0",
+    "deploy": "echo \"No deploy script specified\" && exit 0",
     "lint": "eslint .",
     "preview": "vite preview"
   },
